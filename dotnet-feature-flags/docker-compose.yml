@@ -1,24 +1,24 @@
 version: '3.4'
 
-services: 
+services:
 
   frontend:
     image: storeimage
     build:
       context: .
       dockerfile: DockerfileStore
-    environment: 
+    environment:
       - ProductEndpoint=http://backend:8080
       - ImagePrefix=http://localhost:32001/images
-      - ConnectionStrings:AppConfig=[PASTE CONNECTION STRING HERE]
+      - ConnectionStrings:AppConfig=Endpoint=https://eshop-app-features1743105759.azconfig.io;Id=5PZD;Secret=2oaiIm0/qBmdiy+tvDzC49x14cZz1DP4ZrYrXysHR/s=
     ports:
       - "32000:8080"
-    depends_on: 
+    depends_on:
       - backend
   backend:
     image: productservice
-    build: 
+    build:
       context: .
       dockerfile: DockerfileProducts
-    ports: 
+    ports:
       - "32001:8080"
